@@ -13,7 +13,7 @@ class User {
 
   set name(newName) {
     if (typeof newName !== "string") {
-      throw new TypeError(`ERROR!!! Parameter "${newName}" has unappropriate type`);
+      throw new TypeError(`Parameter "${newName}" has unappropriate type`);
     }
     this._name = newName;
   }
@@ -24,7 +24,7 @@ class User {
 
   set surname(newSurname) {
     if (typeof newSurname !== "string") {
-      throw new TypeError(`ERROR!!! Parameter "${newSurname}" has unappropriate type`);
+      throw new TypeError(`Parameter "${newSurname}" has unappropriate type`);
     }
     this._surname = newSurname;
   }
@@ -52,7 +52,7 @@ class Student extends User {
 
   set year(newYear) {
     if (typeof newYear !== "number") {
-      throw new TypeError(`ERROR!!! Parameter "${newYear}" has unappropriate type`);
+      throw new TypeError(`Parameter "${newYear}" has unappropriate type`);
     }
     this._year = newYear;
   }
@@ -61,12 +61,12 @@ class Student extends User {
     return this._year;
   }
 
-  get course() {
-    const course = new Date().getFullYear() - this.year;
+  getCourse() {
+    const course = new Date().getFullYear() - this.year + 1;
     if (course < 1 || course > 5) {
-      throw new RangeError(`ERROR!!! No such "${course}" course found`);
+      throw new RangeError(`No such "${course}" course found`);
     }
-    return `student ${this.fullName} at ${course} course university`;
+    return course;
   }
 }
 
